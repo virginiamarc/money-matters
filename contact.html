@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  
+<head>
+  <title>MMBT :: Contact</title>
+  <meta charset="utf-8">
+  <link rel="icon" href="media/favicon.ico">
+  <link rel="stylesheet" type="text/css" href="mmbt.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <script src="mmbt.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.17.0/jquery.validate.min.js"></script>
+
+  <script>
+    function checkPhoneRequired() {
+      const dateField = document.getElementById("Date");
+      const phoneField = document.getElementById("Phone");
+  
+      if (dateField.value) {
+        // If a date is selected, make the phone field required
+        phoneField.setAttribute("required", "required");
+        phoneField.setAttribute("pattern", "\\d{10}");
+        phoneField.setAttribute("title", "Phone number must be a 10-digit US number without any special characters or spaces.");
+      } else {
+        // If no date is selected, remove the required attribute from the phone field
+        phoneField.removeAttribute("required");
+        phoneField.removeAttribute("pattern");
+        phoneField.removeAttribute("title");
+      }
+    }
+  
+    function validatePhoneNumber() {
+      const phoneField = document.getElementById("Phone");
+      const phoneValue = phoneField.value;
+  
+      // Check if the phone number is exactly 10 digits
+      const phoneRegex = /^\d{10}$/;
+      if (phoneField.hasAttribute("required") && !phoneRegex.test(phoneValue)) {
+        alert("Please enter a valid 10-digit phone number.");
+        phoneField.focus();
+        return false;
+      }
+  
+      return true;
+    }
+  
+  function captureFormData(form) {
+    let formData = "You have entered the following information:\n\n";
+    for (let i = 0; i < form.elements.length; i++) {
+      const field = form.elements[i];
+      if (field.name && field.value) {
+        if (field.type === "date") {
+          // Reformat the date to MM-DD-YYYY
+          const dateValue = new Date(field.value);
+          const formattedDate = `${String(dateValue.getMonth() + 1).padStart(2, "0")}-${String(dateValue.getDate()).padStart(2, "0")}-${dateValue.getFullYear()}`;
+          formData += `${field.name}: ${formattedDate}\n`;
+        } else {
+          formData += `${field.name}: ${field.value}\n`;
+        }
+      }
+    }
+    return formData;
+  }
+  
+    function showPopup(message) {
+      // Create the overlay
+      const overlay = document.createElement("div");
+      overlay.id = "popupOverlay"; // Assign an ID to overlay for later reference
+      overlay.style.position = "fixed";
+      overlay.style.top = "0";
+      overlay.style.left = "0";
+      overlay.style.width = "100%";
+      overlay.style.height = "100%";
+      overlay.style.backgroundColor = "rgba(0, 0, 0, 0.5)"; // Semi-transparent black
+      overlay.style.zIndex = "999"; // Ensure it appears below the popup
+      document.body.appendChild(overlay);
+  
+      // Create the popup
+      const popup = document.createElement("div");
+      popup.id = "popupMessage"; // Assign an ID to the popup for later reference
+      popup.className = "popup-message"; // Use the CSS class for styling
+      popup.innerHTML = `
+        <p>${message.replace(/\n/g, "<br>")}</p>
+        <button id="closePopupButton" style="margin-top: 10px; padding: 5px 10px; background-color: #007BFF; color: #fff; border: none; border-radius: 4px; cursor: pointer;">Close</button>
+      `;
+      document.body.appendChild(popup);
+  
+      // Add event listener to the "Close" button
+      document.getElementById("closePopupButton").addEventListener("click", closePopup);
+    }
+  
+    function closePopup() {
+      // Remove the popup and overlay
+      const popup = document.getElementById("popupMessage"); // Select the popup by ID
+      const overlay = document.getElementById("popupOverlay"); // Select the overlay by ID
+      if (popup) popup.remove(); // Remove the popup if it exists
+      if (overlay) overlay.remove(); // Remove the overlay if it exists
+  
+      // Reset the form
+      document.getElementById("frm").reset(); // Reset the form
+    }
+  
+    // Add event listener for form submission
+    document.addEventListener("DOMContentLoaded", function () {
+      const form = document.getElementById("frm");
+      if (form) {
+        form.onsubmit = function (e) {
+          e.preventDefault(); // Prevent the default form submission
+  
+          // Validate the phone number if required
+          if (!validatePhoneNumber()) {
+            return false;
+          }
+  
+          // Capture form data and show the popup
+          const formData = captureFormData(this); // Capture form data
+          showPopup(formData); // Show the popup with the form data
+        };
+      }
+    });
+  </script>
+</head>
+  
+<body>
+  <header>
+  <h1>Money Matters: Budget & Thrive</h1>
+  <a class="hmbgr" onclick="toggleNavBar()"><i class="fa fa-bars"></i></a>
+  </header>
+
+  <nav id="navbar">
+  <ul>
+    <li><a href="index.html" title="Go to Home page">Home</a></li>
+    <li><a href="budgeting.html" title="Go to Budgeting Tips">Budgeting Tips</a></li>
+    <li><a href="tracker.html" title=" Go to Expense Tracker">Expense Tracker</a></li>
+    <li><a href="resources.html" title="Go to Financial Resources">Financial Resources</a></li>
+    <li><a href="success.html" title="Go to Success Stories">Success Stories</a></li>
+    <li><a href="contact.html" class="menu-chosen" title="Go to Contact">Contact</a></li>
+  </ul>
+  </nav>
+  
+  <main>
+  <h2>Get in Touch</h2>
+  
+  <p>Required information is marked with an asterisk (*).</p>
+
+  <form id="frm">
+    <div class="grid-container">
+      <div class="rightJustify">
+        <label for="Name">* Name: </label>
+      </div>
+      <div class="leftJustify">
+        <input type="text" id="Name" name="Name" required>
+      </div>
+  
+      <div class="rightJustify">
+        <label for="Email">* E-mail: </label>
+      </div>
+      <div class="leftJustify">
+        <input type="email" id="Email" name="Email" required>
+      </div>
+  
+      <div class="rightJustify">
+        <label for="Date">* Schedule a Call: </label>
+      </div>
+      <div class="leftJustify">
+        <input type="date" id="Date" name="Date" required>
+      </div>
+  
+      <div class="rightJustify">
+        <label for="Phone">* Phone: </label>
+      </div>
+      <div class="leftJustify">
+        <input type="tel" id="Phone" name="Phone" required>
+      </div>
+  
+      <div class="rightJustify">
+        <label for="Message"> Message: </label>
+      </div>
+      <div class="leftJustify">
+        <textarea id="Message" name="Message" rows="3" cols="50"></textarea>
+      </div>
+  
+      <div class="rightJustify">
+        &nbsp;
+      </div>
+      <div class="leftJustify">
+        <input type="submit" id="Submit" value="Submit">
+      </div>
+    </div>
+  </form>
+
+  <!-- FAQ Section -->
+  <section id="faq">
+    <h3>Frequently Asked Questions (FAQ)</h3>
+    <div class="faq-item">
+    <h4>1. How do I schedule a call?</h4>
+    <p>To schedule a call, simply fill out the contact form above with your details, including your 10 digit phone number, and your preferred date and time for the call.</p>
+    </div>
+    <div class="faq-item">
+    <h4>2. What do I need to provide to get started?</h4>
+    <p>We require your name, email, phone number, and a brief message. If you wish to schedule a call, make sure to include a date for when you’d like to talk.</p>
+    </div>
+    <div class="faq-item">
+    <h4>3. How will I know when my call is scheduled?</h4>
+    <p>Once your request is submitted, we will confirm the scheduled call by sending a confirmation email with all the details.</p>
+    </div>
+    <div class="faq-item">
+    <h4>4. What happens if I miss my scheduled call?</h4>
+    <p>If you miss your scheduled call, please contact us to reschedule at your earliest convenience. We understand that life happens!</p>
+    </div>
+  </section>
+  </main>
+  
+  <footer>
+  <p id="social">
+    <a href="https://www.facebook.com/MyFacebookPage" target="_blank" title="Follow us on Facebook">
+    <i class="fab fa-facebook-f"></i>
+    </a>
+    <a href="https://www.instagram.com/MyInstagramPage" target="_blank" title="Follow us on Instagram">
+    <i class="fab fa-instagram"></i>
+    </a>
+  </p>
+
+  <p id="footer-links">
+    <a href="index.html">Home</a> |
+    <a href="budgeting.html">Budgeting Tips</a> |
+    <a href="tracker.html">Expense Tracker</a> |
+    <a href="resources.html">Financial Resources</a> |
+    <a href="success.html">Success Stories</a> |
+    <a href="contact.html">Contact</a>
+  </p>
+
+  <p id="copy">
+    &copy; 2025 Money Matters: Budget & Thrive<br>
+    <a href="mailto:vmarc4@hawkmail.hccfl.edu" title="Send e-mail to vmarc4@hawkmail.hccfl.edu">vmarc4@hawkmail.hccfl.edu</a><br>
+    
+    <span id="mobile"><a href="tel:888-555-2222">
+    <i class="fa fa-phone"></i> 888-555-2222</a></span>
+    <span id="desktop">888-555-2222</span>
+  </p>
+  </footer>
+</body>  
+</html>

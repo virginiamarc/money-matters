@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <title>MMBT :: BT</title>
+  <meta charset="utf-8">
+  <link rel="icon" href="media/favicon.ico">
+  <link rel="stylesheet" type="text/css" href="mmbt.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <script src="mmbt.js"></script>
+</head>
+  
+<body>
+  <header>
+    <h1>Money Matters: Budget & Thrive</h1>
+    <a class="hmbgr" onclick="toggleNavBar()"><i class="fa fa-bars"></i></a>
+  </header>
+
+  <nav id="navbar">
+    <ul>
+      <li><a href="index.html" title="Go to Home page">Home</a></li>
+      <li><a href="budgeting.html" class="menu-chosen" title="Go to Budgeting Tips">Budgeting Tips</a></li>
+      <li><a href="tracker.html" title=" Go to Expense Tracker">Expense Tracker</a></li>
+      <li><a href="resources.html" title="Go to Financial Resources">Financial Resources</a></li>
+      <li><a href="success.html" title="Go to Success Stories">Success Stories</a></li>
+      <li><a href="contact.html" title="Go to Contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <div class="left-content">
+      <h2>Master Your Budget</h2>
+      <p>Smart budgeting helps you manage expenses, save effectively, and achieve your financial goals!</p>
+      
+      <p><strong>Here are 10 tips to get you started:</strong></p>
+      
+      <ol class="financial-tips">
+        <li>Track Your Income and Expenses Regularly</li>
+        <li>Create a Monthly Budget and Stick to It</li>
+        <li>Set Clear Financial Goals</li>
+        <li>Reduce Unnecessary Expenses</li>
+        <li>Plan for Irregular Expenses</li>
+        <li>Create an Emergency Fund</li>
+        <li>Stop Using Credit and Make Debt Repayment a Priority</li>
+        <li>Use Budgeting Apps to Stay Organized</li>
+        <li>Save a Portion of Your Income Automatically</li>
+        <li>Review and Adjust Your Budget Regularly</li>
+      </ol>
+
+      <div class="center">
+        <img src="media/budgeting.jpg" alt="Budgeting Tips" width="560">
+      </div> 
+    </div>
+
+    <!-- Right-side Budgeting Calculator -->
+    <div class="right-content">
+      <h3>Budgeting Calculator</h3>
+      <label for="income">Total Monthly Income:</label>
+      <input type="number" id="income" placeholder="Enter your total monthly income" oninput="validateInput()">
+
+      <label for="expenses">Total Monthly Expenses:</label>
+      <input type="number" id="expenses" placeholder="Enter your total monthly expenses" oninput="validateInput()">
+
+      <!-- Calculate Balance Button -->
+      <input type="button" value="Calculate Balance" onclick="calculateBudget()" id="calculateButton" disabled>
+      
+      <!-- Results section -->
+      <div class="result">
+        <!-- Display Income, Expenses, and Remaining Balance -->
+        <p>Monthly Income: <span id="displayIncome">$0.00</span></p>
+        <p>Monthly Expenses: <span id="displayExpenses">$0.00</span></p>
+        <p>Remaining Balance: <span id="balance">$0.00</span></p>
+        
+        <!-- Display the suggestion (Initially hidden) -->
+        <p id="suggestion" style="display:none;"></p> <!-- Set initial display to none -->
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <!-- Add Social Media Links -->
+    <p id="social">
+      <a href="https://www.facebook.com/MyFacebookPage" target="_blank" title="Follow us on Facebook">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="https://www.instagram.com/MyInstagramPage" target="_blank" title="Follow us on Instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
+    </p>
+
+    <!-- Add Footer Links for Pages -->
+    <p id="footer-links">
+      <a href="index.html">Home</a> |
+      <a href="budgeting.html">Budgeting Tips</a> |
+      <a href="tracker.html">Expense Tracker</a> |
+      <a href="resources.html">Financial Resources</a> |
+      <a href="success.html">Success Stories</a> |
+      <a href="contact.html">Contact</a>
+    </p>
+
+    <!-- Copyright Section (This will be at the bottom of the footer) -->
+    <p id="copy">
+      &copy; 2025 Money Matters: Budget & Thrive<br>
+      <a href="mailto:vmarc4@hawkmail.hccfl.edu" title="Send e-mail to vmarc4@hawkmail.hccfl.edu">vmarc4@hawkmail.hccfl.edu</a><br>
+      <span id="mobile"><a href="tel:888-555-2222">
+        <i class="fa fa-phone"></i> 888-555-2222</a></span>
+      <span id="desktop">888-555-2222</span>
+    </p>
+  </footer>
+
+  <script>
+    // Function to validate if both input fields are filled
+    function validateInput() {
+      var income = document.getElementById('income').value;
+      var expenses = document.getElementById('expenses').value;
+
+      // Disable the button if either income or expenses field is empty
+      // Ensure both income and expenses are non-empty and not NaN
+      var isValid = income !== "" && expenses !== "" && !isNaN(income) && !isNaN(expenses);
+
+      // Enable/Disable the button based on the validity of both fields
+      document.getElementById('calculateButton').disabled = !isValid;
+    }
+
+    // Function to calculate the budget balance and update the display
+    function calculateBudget() {
+      var income = parseFloat(document.getElementById('income').value) || 0;
+      var expenses = parseFloat(document.getElementById('expenses').value) || 0;
+      var balance = income - expenses;
+
+      // Update the results: Monthly Income, Monthly Expenses, and Remaining Balance
+      document.getElementById('displayIncome').textContent = "$" + income.toFixed(2);
+      document.getElementById('displayExpenses').textContent = "$" + expenses.toFixed(2);
+      document.getElementById('balance').textContent = "$" + balance.toFixed(2);
+
+      // Display budgeting suggestions based on the remaining balance
+      var suggestion = "";
+      if (balance > 0) {
+        suggestion = "Great job! You have a positive balance. Consider saving or investing a portion of it for future financial goals.";
+      } else if (balance === 0) {
+        suggestion = "You are breaking even. Try to review your expenses and see if you can save or cut back on any non-essential items.";
+      } else {
+        suggestion = "You have a negative balance. It's important to reduce your expenses. Start by identifying the areas where you can cut costs.";
+      }
+
+      // Display the suggestion after calculation (make suggestion visible)
+      document.getElementById('suggestion').textContent = suggestion;
+      document.getElementById('suggestion').style.display = "block"; // Show the suggestion
+    }
+  </script>
+</body>  
+</html>

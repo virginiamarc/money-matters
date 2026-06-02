@@ -1,0 +1,702 @@
+* { box-sizing: border-box; }
+header, nav, #navbar, main, footer { display: block; }
+
+body {
+  margin: 0;
+  background-color: hsl(298, 68%, 30%);
+  color: hsl(0, 0%, 0%);
+  font-family: Verdana, Arial, sans-serif;
+}
+
+header {
+  background-color: hsl(298, 68%, 30%);
+  color: hsl(0, 0%, 100%);
+  font-family: Georgia, serif;
+  background-image: linear-gradient(hsl(298, 68%, 30%, 0.7), hsla(0, 0%, 0%, 0.7)), url(media/mmbt-banner.jpg);
+  background-size: 300px 100px;
+  background-position: right;
+  background-repeat: no-repeat;
+  text-align: left;
+  margin: 0;
+  padding-left: 10px;
+}
+
+h1 {
+  line-height: 76px;
+  height: 76px;
+  padding-left: 10px;
+  margin: 0;
+}
+
+h2 {
+  color: hsl(298, 68%, 30%);
+  font-family: Georgia, serif;
+}
+
+h3 {
+  color: rgb(0, 0, 0);
+}
+
+a {
+  color: hsl(298, 68%, 30%);
+}
+a:visited {
+  color: hsl(298, 68%, 30%);
+}
+a:hover {
+  background-color: hsl(304, 15%, 78%);
+}
+
+a.hmbgr {
+  background-color: (hsl(298, 68%, 30%));
+  color: hsl(0, 0%, 100%);
+  padding: .95em;
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: none;
+}
+a.hmbgr:hover {
+  background-color: hsla(0, 0%, 100%, 0.199);
+  color: hsl(0, 0%, 100%);
+}
+
+nav {
+  background-color: hsl(0, 0%, 0%);
+  font-weight: bold;
+  border: 2px solid hsl(298, 68%, 30%);
+  padding: 0.2em;
+
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+nav a {
+  text-decoration: none;
+  padding: 0 0.5em 0 0.5em;
+  font-size: 1.2em;
+}
+nav a:link {
+  color: hsl(0, 0%, 100%)
+}
+nav a:visited {
+  color: hsl(0, 0%, 100%)
+}
+nav a:hover {
+  background-color: hsl(298, 68%, 30%);
+}
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+nav li {
+  display: inline-block;
+}
+.menu-chosen {
+  background-color: rgb(139, 89, 139);
+}
+
+main {
+  display: block;
+  background-color: #ffffff;
+  padding: 1px 20px 20px 20px;
+}
+
+#homehero, #successstorieshero, #financialresourceshero {
+  /* Set a specific height */
+  height: 500px;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed; /* Enables parallax effect */
+  background-position: center; /* centers the background image */
+  background-repeat: no-repeat; /* Ensures the background image does not tile (repeat itself) */
+  background-size: cover; /* Ensures the background image covers the area */
+}
+
+#homehero { background-image: url(media/mmbt71000.jpg); }
+#successstorieshero { background-image: url(media/ss1.jpg); }
+#financialresourceshero { background-image: url(media/fr2.jpg); }
+
+/* Styling for the left-side content */
+.left-content {
+  width: 60%;
+}
+
+/* Styling for the right-side calculator */
+.right-content {
+  width: 35%;
+  padding: 10px; /* Reduce padding */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #c2bac1;
+  margin-top: 20px; /* Add space above the calculator */
+}
+
+.right-content h3 {
+  text-align: center;
+  margin-bottom: 10px; /* Reduce spacing below the heading */
+}
+
+.right-content label {
+  display: block;
+  margin: 5px 0; /* Reduce spacing between label and input */
+}
+
+.right-content input[type="number"],
+.right-content input[type="button"] {
+  width: 100%;
+  padding: 8px; /* Reduce padding inside input */
+  margin-bottom: 8px; /* Reduce spacing between input */
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.right-content .result {
+  margin: 5px 0; /* Reduce spacing between result paragraphs */
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Styling for the suggestion text */
+#suggestion {
+  margin-top: 10px; /* Reduce spacing above the suggestion */
+  font-size: 0.9em; /* Optional: Make the Suggestion text smaller */
+  font-weight: normal;
+  color: #333;
+  text-align: center;
+  padding: 10px;
+}
+
+/* Add a style definition for a new class called excursion */
+.excursion {
+  color: rgb(139, 17, 153);
+  font-size: 1.5em;
+  font-style: italic;
+  font-family: Georgia, serif;
+}
+
+dt {
+  font-weight: bold;
+  color: hsl(298, 68%, 30%);
+  border-bottom: 2px solid hsl(298, 68%, 30%);
+  margin-left: 1em;
+  margin-right: 1em;
+}
+dd { margin-bottom: 1em; }
+
+/* Add a style definitions for links in footer - email and phone number */
+footer {
+  color: hsl(0, 0%, 100%); /* White text */
+  font-size: 0.75em; /* Slightly larger text size */
+  font-style: italic; /* Italicized text */
+  padding: 0; /* No padding */
+  margin: 0; /* Remove margin */
+  background-color: hsl(298, 68%, 30%); /* White background */
+  display: flex; /* Use flexbox to control layout */
+  flex-direction: column; /* Stack content vertically */
+  justify-content: flex-end; /* Push content towards the bottom */
+  min-height: 200px; /* Ensures footer has enough height */
+}
+
+/* Style for copyright information */
+footer #copy {
+  text-align: center; /* Centers the text */
+  margin-top: auto; /* Pushes the copyright section to the bottom of the footer */
+  font-style: normal; /* Remove italics from copyright text */
+}
+
+footer a {
+  color: hsl(306, 14%, 73%); /* Link color */
+  text-decoration: none; /* Removes underline from links */
+}
+
+footer a:hover {
+  background-color: hsl(0, 0%, 100%); /* Background color on hover */
+  color: hsl(306, 14%, 73%); /* Keeps text color the same */
+}
+
+/* Add styling for the footer Links */
+footer #footer-links {
+  text-align: center;
+  margin-top: 1em
+}
+
+footer #footer-links a {
+  color: hsl(0, 0%, 100%); /* White color for links */
+  margin: 0 10px; /* Space between the links */
+  text-decoration: none;
+}
+
+footer #footer-links a:hover {
+  color: hsl(298, 68%, 30%); /* Blue color for links on hover */
+}
+
+/* Add icon styling under footer links */
+footer #social {
+  text-align: center;
+  margin-top: 1em;
+}
+
+footer #social a {
+  color: hsl(0, 0%, 100%); /* White color for icons */
+  font-size: 1.5em; /* Icon size */
+  margin: 0 10px; /* Space between icons */
+  text-decoration: none;
+}
+
+footer #social a:hover {
+  color: hsl(298, 68%, 30%); /* Blue color when hovering */
+}
+
+table {
+  margin-left: auto;
+  margin-right: auto;
+  border-collapse: collapse; }
+th {
+  padding: 5px;
+  background: hsl(298, 68%, 30%);
+  color: white; }
+td {
+  padding: 5px;
+  border: 2px solid hsl(36, 2%, 59%);
+  text-align: center;
+}
+tr:nth-child(even) { background-color: hsl(287, 28%, 81%); }
+table tr:last-child td { border-bottom: 0; }
+table tr td:first-child { border-left: 0; }
+table tr td:last-child { border-right: 0; }
+
+.leftJustify { text-align: left; }
+
+.rightJustify { text-align: right; }
+
+label.error {
+  text-align: left;
+  margin-top: 5px;
+  font: italic 0.9em Arial;
+  color: red;
+}
+
+#mobile { display: none; }
+#desktop { display: inline; }
+/* Default (Desktop) */
+h1 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 2em; /* You can adjust this value as needed */
+  }
+
+  /* Mobile Styles */
+@media only screen and (max-width: 768px) {
+  h1 {
+    line-height: 51px;
+    padding-right: 1.75em;
+    height: 51px;
+    margin: 0;
+    font-size: 1.25em; /* Smaller for mobile */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+/* Responsive images */
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  #homehero, #successstorieshero, #financialresourceshero {
+    width: 100%;
+    height: auto; /* Adjust height for smaller screens */
+    object-fit: cover; /* Maintain aspect ratio */
+    background-size: cover; /* Ensure the image covers the area */
+    background-attachment: scroll; /* Disable parallax effect on mobile */
+  }
+
+  nav { padding: 0; }
+  nav a {
+    display: block;
+    padding: .2em;
+    font-size: 1em;
+  }
+  nav ul {
+    margin: 0;
+    padding: 0;
+  }
+  nav li {
+    display: block;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid #fff;
+  }
+  nav li:last-child { border-bottom: 0px; }
+  main { padding: 0.4em; }
+  #mobile { display: inline; }
+  a.hmbgr { display: block; }
+  #navbar { display: none; }
+  #desktop { display: none; }
+  #homehero, #successstorieshero, #financialresourceshero {
+    height: 300px; /* Adjust height for smaller screens */
+  }
+  
+  .right-content {
+    width: 90%; /* Increase the width to 90% for mobile view */
+    margin: 0 auto; /* Center the calculator horizontally */
+  }
+
+  .left-content {
+    width: 100%; /* Make the left content span the full width */
+    margin: 0 auto; /* Center the content */
+    padding: 10px; /* Add padding for spacing */
+  }
+
+  .left-content h2,
+  .left-content p,
+  .left-content ol {
+    text-align: left; /* Align text to the left */
+    margin-bottom: 15px; /* Add spacing between elements */
+  }
+
+  .left-content ol.financial-tips {
+    padding-left: 20px; /* Add padding for ordered list indentation */
+  }
+
+  .right-content {
+    width: 100%; /* Make the video container span the full width */
+    margin: 0 auto; /* Center the container */
+    padding: 10px; /* Add padding for spacing */
+  }
+
+  .right-content iframe {
+    width: 100%; /* Make the video responsive */
+    height: auto; /* Maintain aspect ratio */
+  }
+
+  .right-content h3 {
+    text-align: center; /* Center the heading */
+    margin-bottom: 10px; /* Add spacing below the heading */
+  }
+}
+
+@media only screen and (max-width: 580px) {
+  .mob-video { width: 420px; height: 236px; }
+  .mob-scratch { width: 363px; height: 302px; }
+}
+
+.grid-container {
+  display: inline-grid;
+  margin-left: auto;
+  margin-right: auto;
+  grid-template-columns: auto auto;
+  background-color: hsl(300, 7%, 89%);
+  padding: 10px;
+  grid-column-gap: 5px;
+  grid-row-gap: 10px;
+}
+
+.captitle {
+  color: hsl(298, 68%, 30%);
+  font-weight: bold;
+}
+
+/* Style for the ordered list */
+.financial-tips {
+  padding-left: 20px; /* Adds space to the left side of the list */
+  margin-bottom: 20px; /* Adds space below the list */
+  line-height: 1.5; /* Increases line height for better readability */
+}
+
+/* Style for each list item */
+.financial-tips li {
+  margin-bottom: 10px; /* Adds space between list items */
+  font-size: 1.0em;    /* Slightly increases font size for better readability */
+}
+
+/* Scoped styles for a specific section */
+.custom-list ul {
+  padding-left: 20px; /* Adds space to the left side of the list */
+  margin-bottom: 20px; /* Adds space below the list */
+  line-height: 1.6; /* Increases line height for better readability */
+}
+
+.custom-list ul li {
+  margin-bottom: 10px; /* Adds space between list items */
+  font-size: 1.0em; /* Slightly increases font size for better readability */
+}
+
+.custom-list ul li strong {
+  font-weight: bold; /* Ensures the bold text stands out */
+}
+
+/* Add your custom styles here */
+.container {
+  width: 80%;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.container h2 {
+  text-align: center;
+  color: #333;
+}
+
+.container .form-group {
+  margin-bottom: 15px;
+}
+
+.container label {
+  display: block;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+.container input[type="number"], 
+.container input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.container button {
+  width: 100%;
+  padding: 10px;
+  background-color: #A8D5BA;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.container button:hover {
+  background-color: #45a049;
+}
+
+.container .results {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #e7f7e7;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.container .captitle {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+/* Add CSS for Speech Bubbles and Carousel */
+.testimonials-carousel {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  margin-bottom: 2em; /* Add spacing below the carousel */
+}
+
+.carousel {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.testimonial {
+  flex: 0 0 100%;
+  text-align: center;
+  padding: 1em;
+}
+
+.testimonial-image {
+  width: 150px;
+  height: auto;
+  border-radius: 50%;
+  margin-bottom: 1em;
+}
+
+.speech-bubble {
+  background: #f9f9f9;
+  padding: 1em;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+.case-study {
+  margin-bottom: 2em; /* Add spacing below the table */
+  text-align: center; /* Center-align the table */
+}
+
+.table-container {
+  margin: 0 auto; /* Center the table container */
+  max-width: 100%; /* Ensure it doesn't exceed the container width */
+  overflow-x: auto; /* Allow horizontal scrolling on smaller screens */
+}
+
+.case-study-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1em 0; /* Add spacing above and below the table */
+}
+
+/* Add arrows for navigation */
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 1000;
+  border-radius: 50%;
+}
+
+.testimonials-carousel {
+  position: relative;
+}
+
+.carousel-arrow.left {
+  left: 10px;
+}
+
+.carousel-arrow.right {
+  right: 10px;
+}
+
+.carousel-arrow:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Add play/pause button */
+.carousel-controls {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+}
+
+.carousel-button {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.carousel-button:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Responsive adjustments */
+@media only screen and (max-width: 768px) {
+  .speech-bubble {
+    font-size: 0.9em;
+  }
+
+  .carousel-arrow {
+    padding: 8px;
+  }
+
+  .carousel-button {
+    padding: 8px;
+  }
+
+  .testimonial {
+    padding: 0.8em;
+  }
+
+  .testimonial-image {
+    width: 120px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .speech-bubble {
+    font-size: 0.8em;
+    padding: 0.8em;
+  }
+
+  .carousel-arrow {
+    padding: 6px;
+  }
+
+  .carousel-button {
+    padding: 6px;
+  }
+
+  .testimonial-image {
+    width: 100px;
+  }
+}
+
+/* General styling for single-column layout */
+.content {
+  display: flex;
+  flex-direction: column; /* Stack content vertically */
+  align-items: flex-start; /* Align content to the left */
+  width: 100%; /* Full width */
+  max-width: 800px; /* Optional: Limit width for readability */
+  margin: 0 auto; /* Center the content horizontally */
+  padding: 20px; /* Add spacing around the content */
+  text-align: left; /* Align text to the left */
+}
+
+.financial-terms {
+  text-align: left; /* Align text to the left */
+  margin-bottom: 20px; /* Add spacing below the section */
+}
+
+.youtube-video {
+  text-align: left; /* Align the video section to the left */
+  margin-top: 20px; /* Add spacing above the video */
+}
+
+.video-container {
+  position: relative;
+  width: 100%; /* Make the video responsive */
+  padding-bottom: 56.25%; /* Maintain 16:9 aspect ratio */
+  height: 0;
+  overflow: hidden;
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Mobile view - Center-align content */
+@media only screen and (max-width: 768px) {
+  .content {
+    align-items: center; /* Center-align content horizontally */
+    text-align: center; /* Center-align text */
+  }
+}
+
+/* Add styles for the popup message */
+.popup-message {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 10000;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+/* Money Matters: Budget & Thrive created by Virginia Marc B.S., (c) 2025 */
